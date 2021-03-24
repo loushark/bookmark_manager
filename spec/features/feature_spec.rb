@@ -19,7 +19,7 @@ feature 'bookmarks page' do
   end
 
   feature 'adding bookmark' do
-    scenario 'user wants to save a url as a bookmark' do
+    scenario 'checks add bookmark page exists' do
       visit 'bookmarks/addbookmark'
       expect(page).to have_content("Add bookmark")
     end
@@ -27,10 +27,10 @@ feature 'bookmarks page' do
     scenario 'A user can add a bookmark to Bookmark Manager' do
         visit('/bookmarks/addbookmark')
         fill_in('url', with: 'http://testbookmark.com')
+        fill_in('title', with: 'Test')
         click_button('add')
 
-        expect(page).to have_content 'http://testbookmark.com'
+        expect(page).to have_link(href: 'http://testbookmark.com')
       end
-
   end
 end

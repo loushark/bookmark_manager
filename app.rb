@@ -17,7 +17,7 @@ class BookmarksManager < Sinatra::Base
   end
 
   post '/bookmarks' do
-    Bookmarks.create(url: params[:url])
+    Bookmarks.create(url: params[:url], title: params[:title])
   #   url = params['url']
   #   if ENV['ENVIRONMENT'] == 'test'
 	# 		connect = PG.connect :dbname => 'bookmark_manager_test'
