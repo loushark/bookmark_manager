@@ -4,11 +4,16 @@ As a user
 So that I can choose a website
 I would like to see a list of bookmarks
 
-| class     | instances | methods  |
-|-----------|-----------|----------|
-| user      | @username |          |
-| bookmarks | @website  | list     |
-|           |           |          |
+As a time-pressed user
+So that I can save a website
+I would like to add the site's address and title to bookmark manager
+
+
+| class     | instances | methods                |
+|-----------|-----------|------------------------|
+| user      | @username |                        |
+| bookmarks | @website  | list                   |
+|           |           | add(address, title)    |
 
 
 
