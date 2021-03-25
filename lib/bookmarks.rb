@@ -9,7 +9,7 @@ class Bookmarks
 	end
 
 	def self.all
-
+		bookmarks_arr = []
 		if ENV['ENVIRONMENT'] == 'test'
 			connect = PG.connect :dbname => 'bookmark_manager_test'
 		else
@@ -17,7 +17,10 @@ class Bookmarks
 		end
 
 		result = connect.exec "SELECT * FROM bookmarks"
-		result.map {|bookmark| {"#{bookmark['title']}":"#{bookmark['url']}"}}
+		result.map do |bookmark|
+			bookmarks_arr << {:title => "#{bookmark['title']}", :url => "#{bookmark['url']}"}
+		end
+		bookmarks_arr
 	end
 
 	def self.create(url:, title:)

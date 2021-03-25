@@ -1,16 +1,11 @@
 <h1>Bookmarks:</h1>
 
-<%= @bookmarks %>
-
 <ul>
   <% @bookmarks.each do |bookmark| %>
-  <% bookmark.each do | k, v|%>
     <li>
-      <a href=<%= v %>>
-          <%= k %>
+      <a href=<%= bookmark[:url] %>>
+          <%= bookmark[:title] %>
       </a>
     </li>
-    <%= end %>
-    <li> <%= bookmark %> </li>
-  <% end %>
+    <% end %>
 </ul>
