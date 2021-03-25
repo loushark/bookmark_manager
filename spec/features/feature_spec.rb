@@ -16,6 +16,9 @@ feature 'bookmarks page' do
 
   scenario 'shows bookmarks' do
     clear_and_pop_db
+    expect(page).to have_content("Makers")
+    expect(page).to have_content("Destroy all software")
+    expect(page).to have_content("Google")
   end
 
   feature 'adding bookmark' do

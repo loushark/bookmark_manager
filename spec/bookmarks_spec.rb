@@ -13,9 +13,7 @@ describe Bookmarks do
 
 			bookmarks = Bookmarks.all
 
-			expect(bookmarks).to include("http://www.makersacademy.com")
-			expect(bookmarks).to include("http://www.destroyallsoftware.com")
-			expect(bookmarks).to include("http://www.google.com")
+			expect(bookmarks[0]).to include({:title=>"", :url=>"http://www.makersacademy.com"})
 		end
 	end
 
@@ -24,16 +22,14 @@ describe Bookmarks do
 			connect = PG.connect :dbname => 'bookmark_manager_test'
 			bookmark = Bookmarks.create(url:'http://www.makersacademy.com', title: 'Makers')
 			bookmarks = Bookmarks.all
-			expect(bookmarks).to include('http://www.makersacademy.com')
-			expect(bookmarks).to include('Makers')
+			expect(bookmarks).to include({:title=>"Makers", :url=>"http://www.makersacademy.com"})
 		end
 	end
 
 	describe '.create' do
 		it 'creates a new bookmark' do
 			Bookmarks.create(url:'http://www.testbookmark.com', title: 'Test')
-			expect(Bookmarks.all).to include 'http://www.testbookmark.com'
-			expect(Bookmarks.all).to include 'Test'
+			expect(Bookmarks.all).to include({:title=>"Test", :url=>"http://www.testbookmark.com"})
 		end
 	end
 
