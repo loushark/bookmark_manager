@@ -1,6 +1,6 @@
 require 'pg'
 
-class Bookmarks
+class Bookmark
 	attr_reader :title, :url
 
 	def initialize(title, url)
@@ -9,7 +9,7 @@ class Bookmarks
 	end
 
 	def self.all
-		bookmarks_arr = []
+		bookmark_arr = []
 		if ENV['ENVIRONMENT'] == 'test'
 			connect = PG.connect :dbname => 'bookmark_manager_test'
 		else
@@ -18,9 +18,9 @@ class Bookmarks
 
 		result = connect.exec "SELECT * FROM bookmarks"
 		result.map do |bookmark|
-			bookmarks_arr << {:title => "#{bookmark['title']}", :url => "#{bookmark['url']}"}
+			bookmark_arr << {:title => "#{bookmark['title']}", :url => "#{bookmark['url']}"}
 		end
-		bookmarks_arr
+		bookmark_arr
 	end
 
 	def self.create(url:, title:)

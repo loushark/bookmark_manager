@@ -1,7 +1,7 @@
-require 'bookmarks.rb'
+require 'bookmark.rb'
 
-describe Bookmarks do
-	let(:newBookmark) {Bookmarks.new('title', 'url')}
+describe Bookmark do
+	let(:newBookmark) {Bookmark.new('title', 'url')}
 
 	describe '.all' do
 		it 'returns all bookmarks' do
@@ -11,25 +11,25 @@ describe Bookmarks do
     	connection.exec("INSERT INTO bookmarks (url) VALUES('http://www.destroyallsoftware.com');")
     	connection.exec("INSERT INTO bookmarks (url) VALUES('http://www.google.com');")
 
-			bookmarks = Bookmarks.all
+			bookmark = Bookmark.all
 
-			expect(bookmarks[0]).to include({:title=>"", :url=>"http://www.makersacademy.com"})
+			expect(bookmark[0]).to include({:title=>"", :url=>"http://www.makersacademy.com"})
 		end
 	end
 
 	describe '.all' do
 		it 'returns all bookmarks' do
 			connect = PG.connect :dbname => 'bookmark_manager_test'
-			bookmark = Bookmarks.create(url:'http://www.makersacademy.com', title: 'Makers')
-			bookmarks = Bookmarks.all
-			expect(bookmarks).to include({:title=>"Makers", :url=>"http://www.makersacademy.com"})
+			bookmark = Bookmark.create(url:'http://www.makersacademy.com', title: 'Makers')
+			bookmark = Bookmark.all
+			expect(bookmark).to include({:title=>"Makers", :url=>"http://www.makersacademy.com"})
 		end
 	end
 
 	describe '.create' do
 		it 'creates a new bookmark' do
-			Bookmarks.create(url:'http://www.testbookmark.com', title: 'Test')
-			expect(Bookmarks.all).to include({:title=>"Test", :url=>"http://www.testbookmark.com"})
+			Bookmark.create(url:'http://www.testbookmark.com', title: 'Test')
+			expect(Bookmark.all).to include({:title=>"Test", :url=>"http://www.testbookmark.com"})
 		end
 	end
 

@@ -12,8 +12,8 @@ I would like to add the site's address and title to bookmark manager
 | class     | instances | methods                |
 |-----------|-----------|------------------------|
 | user      | @username |                        |
-| bookmarks | @website  | list                   |
-|           |           | add(address, title)    |
+| bookmarks | @title    | all                    |
+|           | @url      | create(url, title)     |
 
 
 
@@ -38,8 +38,6 @@ Run the query we have saved in the file 01_create_bookmarks_table.sql
 
 - RSpec tests all passing
 - Using test database to clear and populate bookmarks test table
-- Database showing as an array on /bookmarks page
-- Took out user for database so it works across different computers
-- Shout out to Joe Pasquale
+- Titles print on bookmarks page with hyperlinks
 
-- Next challenge is number 10 - Creating bookmarks
+- Next challenge is number 12 - CRUD

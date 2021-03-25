@@ -1,14 +1,14 @@
 require 'sinatra/base'
-require './lib/bookmarks'
+require './lib/bookmark'
 
-class BookmarksManager < Sinatra::Base
+class BookmarkManager < Sinatra::Base
 
   get '/' do
     erb(:index)
   end
 
   get '/bookmarks' do
-  	@bookmarks = Bookmarks.all
+  	@bookmarks = Bookmark.all
     erb(:bookmarks)
   end
 
@@ -17,16 +17,8 @@ class BookmarksManager < Sinatra::Base
   end
 
   post '/bookmarks' do
-    Bookmarks.create(url: params[:url], title: params[:title])
-  #   url = params['url']
-  #   if ENV['ENVIRONMENT'] == 'test'
-	# 		connect = PG.connect :dbname => 'bookmark_manager_test'
-	# 	else
-	# 		connect = PG.connect :dbname => 'bookmark_manager'
-	# 	end
-  #
-  # connect.exec("INSERT INTO bookmarks (url) VALUES('#{url}')")
-  redirect '/bookmarks'
+    Bookmark.create(url: params[:url], title: params[:title])
+    redirect '/bookmarks'
   end
 
   run! if app_file == $0
